@@ -7,3 +7,5 @@ temp
 .settings
 */bin/
 */build/
+*/.cache-main
+*/.cache-tests

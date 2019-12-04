@@ -36,28 +36,6 @@ class Password(value: Int) {
     if (!isValid) {
       false
     } else {
-      /*
-      var largestRepeatingNum = -1
-      var stillOk = true
-      var repeateCount = -1
-      for(i <- 1.to(digits.size-1).reverse) {
-        if(digits(i) == digits(i-1)) {
-          if(largestRepeatingNum<digits(i)) {
-            largestRepeatingNum = digits(i)
-            repeateCount=2
-            stillOk &= true
-          } else if(largestRepeatingNum == digits(i)) {
-            repeateCount+=1
-            stillOk &= repeateCount<3
-          }
-        }
-      }
-      if(!stillOk) {
-        println(largestRepeatingNum+" "+repeateCount+" "+this)
-      }
-      stillOk
-
-      */
       var currentDigit = digits(0)
       var appearedCount = 1
       var hasTwinOnly = false
@@ -65,16 +43,12 @@ class Password(value: Int) {
         if (digits(i) == currentDigit) {
           appearedCount += 1
         } else {
-          if (appearedCount == 2) {
-            hasTwinOnly = true
-          }
+          hasTwinOnly |= appearedCount == 2
           currentDigit = digits(i)
           appearedCount = 1
         }
       }
-      if (appearedCount == 2) {
-        hasTwinOnly = true
-      }
+      hasTwinOnly |= appearedCount == 2
       hasTwinOnly
     }
   }

@@ -15,7 +15,7 @@ class SkyMapHandler(source: String) {
    */
   val destructionOrder = {
     val sortedByDistance = mostVisibleAsteroid.groupedByExactAngles()
-      .map { _.toList.sortBy { case p => math.abs(mostVisibleAsteroid.x - p.x) + math.abs(mostVisibleAsteroid.y - p.y) } } //math.sqrt(math.pow(mostVisibleAsteroid.x - p.x, 2) + math.pow(mostVisibleAsteroid.y - p.y, 2)) } }
+      .map { _.toList.sortBy { case p => math.sqrt(math.pow(mostVisibleAsteroid.x - p.x, 2) + math.pow(mostVisibleAsteroid.y - p.y, 2)) } }
 
     val sortedByApproxAngle = sortedByDistance.toList.sortBy { group =>
       val p = group.head
